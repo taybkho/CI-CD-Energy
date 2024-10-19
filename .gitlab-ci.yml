@@ -1,0 +1,28 @@
+stages:
+  - extract
+  - trasnform
+  - load 
+
+extract_job:
+   stage: extract
+   script:
+      - python3.11.0 etl.py extract
+   only:
+      - schedules 
+
+transform_job:
+   stage: trasnform
+   script: 
+      - python3.11.0 etl.py transform 
+   only:
+      - schedules 
+load_job:
+   stage: load 
+   script:
+      - python3.11.0 etl.py load 
+   only: 
+      - schedules 
+
+  
+    
+    
